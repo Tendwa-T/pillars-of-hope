@@ -4,15 +4,21 @@
   "description": "Node Backend for Pillars of Hope Website",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Tendwa-T",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.3",
+    "morgan": "^1.10.0",
     "nodemon": "^3.1.0"
   }
 }
