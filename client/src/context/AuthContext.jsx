@@ -7,12 +7,15 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const login = () => {
+    async function login() {
+        // Write function to hit Login API on Server
+
         setIsAuthenticated(true);
-    };
-    const logut = () => {
+    }
+
+    function logout() {
         setIsAuthenticated(false);
-    };
+    }
 
     const value = {
         currentUser,
@@ -20,7 +23,7 @@ export function AuthProvider({ children }) {
         isAuthenticated,
         setIsAuthenticated,
         login,
-        logut,
+        logout,
     };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
