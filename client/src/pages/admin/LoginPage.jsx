@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { Box, Button, Container, TextField } from "@mui/material";
+import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext";
 
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [password, setPassword] = useState("");
     const { login } = useAuth();
     const nav = useNavigate();
+
 
 
     const handleEmailChange = (event) => {
@@ -18,21 +21,23 @@ export default function AdminLoginPage() {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
-    const handleSubmit = (event) => {
+
+
+    const handleSubmit = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
-        login();
+        if ((await login(email, password)) === false) {
+            setIsLoading(false);
+            return;
+
+        }
+        console.log(AuthProvider.currentUser);
         nav('/admin/dashboard');
-        console.log('Email', email);
-        console.log('password', password);
     }
     const handleCancel = () => {
         setEmail("");
         setPassword("");
     }
-
-
-
-
     return (
         <div className="flex justify-center items-center h-[100vh] bg-[#c9b098]">
             <div className="flex justify-center items-center flex-col h-[80vh] w-[60vw] bg-[url('../../../login_backdrop.jpg')] bg-center bg-cover rounded-2xl">
@@ -81,6 +86,7 @@ export default function AdminLoginPage() {
                                 </Button>
                             </div>
                         </form>
+                        {isLoading && <CircularProgress />}
                     </Box>
                 </Container>
             </div>
