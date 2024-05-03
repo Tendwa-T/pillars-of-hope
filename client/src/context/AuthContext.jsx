@@ -7,10 +7,31 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    async function login() {
-        // Write function to hit Login API on Server
+    async function login(email, password) {
+        try {
+            const response = await fetch('http://localhost:3000/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setCurrentUser(data.user);
+                setIsAuthenticated(true);
+                return true;
+            } else {
+                console.error(data.message);
+                return false;
+            }
+        } catch (error) {
+            console.log(error);
+        }
 
-        setIsAuthenticated(true);
     }
 
     function logout() {
