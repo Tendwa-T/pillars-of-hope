@@ -12,14 +12,24 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useAuth } from '../../context/useAuth';
+import { ThemeContext } from '../../theme/ThemeContext';
+import { useContext } from 'react';
+import { ContrastOutlined } from '@mui/icons-material';
+
 
 
 export default function AppBarComponent() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    const pages = ['Products', 'Pricing', 'Blog'];
-    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+    const { toggleTheme } = useContext(ThemeContext);
+
+    const { logout } = useAuth();
+
+    const pages = ['Dashboard', 'Events', 'Users'];
+    const settings = ['Profile'];
+
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -34,7 +44,7 @@ export default function AppBarComponent() {
         setAnchorElUser(null);
     }
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
@@ -42,7 +52,7 @@ export default function AppBarComponent() {
                         variant="h6"
                         noWrap
                         component='a'
-                        href="/admin"
+                        href="/admin/dashboard"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -99,7 +109,7 @@ export default function AppBarComponent() {
                         variant="h5"
                         noWrap
                         component='a'
-                        href="/admin"
+                        href="/admin/dashboard"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -125,9 +135,13 @@ export default function AppBarComponent() {
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
+                        <IconButton onClick={toggleTheme} sx={{ mx: 4 }}>
+                            <ContrastOutlined />
+                        </IconButton>
+
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt={useAuth().currentUser.userName} src="/static/images/avatar/2.jpg" sx={{ bgcolor: 'purple' }} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -151,10 +165,15 @@ export default function AppBarComponent() {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
+                            <MenuItem key="logout" onClick={logout}>
+                                <Typography textAlign="center">LogOut</Typography>
+                            </MenuItem>
+
                         </Menu>
                     </Box>
                 </Toolbar>
             </Container>
+
         </AppBar>
     )
 
