@@ -4,7 +4,7 @@ import { createContext, useState } from 'react';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
+    const [currentUser, setCurrentUser] = useState({});
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     async function login(email, password) {
@@ -21,8 +21,8 @@ export function AuthProvider({ children }) {
             });
             const data = await response.json();
             if (response.ok) {
-                setCurrentUser(data.user);
-                setIsAuthenticated(true);
+                setCurrentUser({ userName: data.userName, userID: data.userID, token: data.token });
+                setIsAuthenticated(data.authenticated);
                 return true;
             } else {
                 console.error(data.message);

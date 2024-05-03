@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../../context/AuthContext";
 
 
 export default function AdminLoginPage() {
@@ -11,6 +12,7 @@ export default function AdminLoginPage() {
     const [password, setPassword] = useState("");
     const { login } = useAuth();
     const nav = useNavigate();
+
 
 
     const handleEmailChange = (event) => {
@@ -24,8 +26,12 @@ export default function AdminLoginPage() {
     const handleSubmit = async (event) => {
         setIsLoading(true);
         event.preventDefault();
-        if ((await login(email, password)) === false) return console.log('Login failed');
-        setIsLoading(false);
+        if ((await login(email, password)) === false) {
+            setIsLoading(false);
+            return;
+
+        }
+        console.log(AuthProvider.currentUser);
         nav('/admin/dashboard');
     }
     const handleCancel = () => {
