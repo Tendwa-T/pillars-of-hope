@@ -3,12 +3,15 @@ import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 import { useNavigate } from "react-router-dom";
-import { AuthProvider } from "../../context/AuthContext";
+import AlertComponent from "../../components/admin/AlertComponent";
+
+
 
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [alert, setAlert] = useState({ show: false, message: "", severity: "" })
     const [password, setPassword] = useState("");
     const { login } = useAuth();
     const nav = useNavigate();
@@ -22,17 +25,21 @@ export default function AdminLoginPage() {
         setPassword(event.target.value);
     };
 
+    const handleAlertClose = () => {
+        setAlert({ ...alert, show: false })
+    }
+
 
     const handleSubmit = async (event) => {
         setIsLoading(true);
         event.preventDefault();
-        if ((await login(email, password)) === false) {
-            setIsLoading(false);
-            return;
-
+        const loginSuccess = await login(email, password);
+        if (!loginSuccess) {
+            setAlert({ show: true, message: "Invalid email or password", severity: "error" });
+        } else {
+            nav('/admin/dashboard');
         }
-        console.log(AuthProvider.currentUser);
-        nav('/admin/dashboard');
+        setIsLoading(false);
     }
     const handleCancel = () => {
         setEmail("");
@@ -41,7 +48,7 @@ export default function AdminLoginPage() {
     return (
         <div className="flex justify-center items-center h-[100vh] bg-[#c9b098]">
             <div className="flex justify-center items-center flex-col h-[80vh] w-[60vw] bg-[url('../../../login_backdrop.jpg')] bg-center bg-cover rounded-2xl">
-                <Container maxWidth='sm' className="backdrop-blur-md bg-black/20 rounded-xl m-[10vw] p-[2vw] shadow-xl ">
+                <Container maxWidth='sm' className="backdrop-blur-md bg-black/20 rounded-xl my-[10vw] mx-[5vw] p-[2vw] shadow-xl ">
                     <Box sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -87,11 +94,10 @@ export default function AdminLoginPage() {
                             </div>
                         </form>
                         {isLoading && <CircularProgress />}
+                        {alert.show && <AlertComponent message={alert.message} severity={alert.severity} show={alert.show} onClose={handleAlertClose} />}
                     </Box>
                 </Container>
             </div>
         </div>
-
-
     )
 }
