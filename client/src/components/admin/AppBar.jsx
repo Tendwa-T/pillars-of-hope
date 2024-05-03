@@ -1,117 +1,161 @@
-import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import CssBaseline from '@mui/material';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 
-export default function AppBarComponent({ labels }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
 
-    const handleDrawerToggle = () => {
-        setIsOpen(!isOpen);
+export default function AppBarComponent() {
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+
+    const pages = ['Products', 'Pricing', 'Blog'];
+    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
     }
-
-    const drawer = (
-        <Box
-            onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}
-        >
-            <Typography variant="h6" sx={{ my: 2 }}>
-                POHC - ADMIN
-            </Typography>
-            <Divider />
-            <List>
-                {labels.map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }} selected={selectedIndex === index} onClick={setSelectedIndex(index)}>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
-
-
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    }
     return (
-        <>
-            {/* <Box sx={{ display: "flex" }}>
-                <AppBar component="nav">
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: 'none' } }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography
-                            variant="h6"
-                            component="div"
-                            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-                        >
-                            POH - ADMIN
-                        </Typography>
-                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                            {labels.map((text, index) => (
-                                <Button key={text} color="inherit" onClick={setSelectedIndex(index)}>{text}</Button>
-                            ))}
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-                <nav>
-                    <Drawer
-                        variant="temporary"
-                        open={isOpen}
-                        onClose={handleDrawerToggle}
-                        ModalProps={{
-                            keepMounted: true,
-                        }}
+        <AppBar position="static">
+            <Container maxWidth="xl">
+                <Toolbar disableGutters>
+                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component='a'
+                        href="/admin"
                         sx={{
-                            display: { xs: 'block', sm: 'none' },
-                            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
                         }}
                     >
-                        {drawer}
-                    </Drawer>
-                </nav>
-            </Box> */}
-            <Box>
-                <AppBar position="static">
-                    <CssBaseline />
-                    <Toolbar>
+                        ADMIN
+                    </Typography>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: 'none' } }}
+                            size='large'
+                            aria-label='current user account'
+                            aria-controls='menu-appbar'
+                            aria-haspopup='true'
+                            onClick={handleOpenNavMenu}
+                            color='inherit'
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography
-                            variant="h6"
-                            component="div"
-                            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
                         >
-                            POH - ADMIN
-                        </Typography>
-                        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                            {labels.map((text, index) => (
-                                <Button key={text} color="inherit" onClick={setSelectedIndex(index)}>{text}</Button>
+                            {pages.map((page) => (
+                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">
+                                        {page}
+                                    </Typography>
+                                </MenuItem>
                             ))}
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-            </Box>
-        </>
-
-    );
+                        </Menu>
+                    </Box>
+                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <Typography
+                        variant="h5"
+                        noWrap
+                        component='a'
+                        href="/admin"
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        ADMIN
+                    </Typography>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        {pages.map((page) => (
+                            <Button
+                                key={page}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                {page}
+                            </Button>
+                        ))}
+                    </Box>
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {settings.map((setting) => (
+                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">{setting}</Typography>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Box>
+                </Toolbar>
+            </Container>
+        </AppBar>
+    )
 
 }
-
-AppBarComponent.propTypes = {
-    labels: PropTypes.arrayOf(PropTypes.string),
-};
