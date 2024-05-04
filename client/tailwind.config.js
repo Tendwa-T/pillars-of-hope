@@ -7,6 +7,8 @@ export default {
   theme: {
     extend: {},
   },
+  important: '#root',
   plugins: [],
+
 }
 
