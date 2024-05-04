@@ -1,4 +1,4 @@
-import AppBarComponent from "../../components/admin/Appbar";
+import AppBarComponent from "../../components/admin/AppBarComponent";
 import AdminEventsSection from "../../components/admin/EventsSection";
 import AdminLandingSection from "../../components/admin/LandingSection";
 
