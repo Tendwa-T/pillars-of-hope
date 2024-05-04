@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,7 +14,6 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useAuth } from '../../context/useAuth';
 import { ThemeContext } from '../../theme/ThemeContext';
-import { useContext } from 'react';
 import { ContrastOutlined } from '@mui/icons-material';
 
 
@@ -23,7 +22,7 @@ export default function AppBarComponent() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    const { toggleTheme } = useContext(ThemeContext);
+    const { toggleTheme, theme } = useContext(ThemeContext);
 
     const { logout } = useAuth();
 
@@ -44,7 +43,10 @@ export default function AppBarComponent() {
         setAnchorElUser(null);
     }
     return (
-        <AppBar position="static" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+        <AppBar position="static" sx={{
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            backgroundColor: theme.palette.mode === 'dark' ? '#004e40' : '#004e40',
+        }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
@@ -134,16 +136,28 @@ export default function AppBarComponent() {
                             </Button>
                         ))}
                     </Box>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                        <Typography
+                            sx={{ cursor: 'default', userSelect: 'none' }}
+                        >
+                            Hello {useAuth().currentUser.userName}
+                        </Typography>
+                    </Box>
+
+
                     <Box sx={{ flexGrow: 0 }}>
+
                         <IconButton onClick={toggleTheme} sx={{ mx: 4 }}>
                             <ContrastOutlined />
                         </IconButton>
 
                         <Tooltip title="Open settings">
+
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt={useAuth().currentUser.userName} src="/static/images/avatar/2.jpg" sx={{ bgcolor: 'purple' }} />
                             </IconButton>
                         </Tooltip>
+
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
