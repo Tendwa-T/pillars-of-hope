@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useAuth } from '../../context/useAuth';
+import { useAuth } from '../../context/Auth/useAuth';
 import { ThemeContext } from '../../theme/ThemeContext';
 import { ContrastOutlined } from '@mui/icons-material';
 

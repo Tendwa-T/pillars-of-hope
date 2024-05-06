@@ -11,7 +11,6 @@ export default function AdminDashboardPage() {
             <AppBarComponent />
             <AdminLandingSection />
             <AdminEventsSection />
-
         </>
 
     );

@@ -33,7 +33,7 @@ export default function AdminLandingSection() {
             }}
             >
                 <Typography
-                    top={'42%'}
+                    top={'30%'}
                     padding={2}
                     variant="h2"
                     position={'relative'}
@@ -45,16 +45,31 @@ export default function AdminLandingSection() {
                     Pillars of Hope Admin Panel
                 </Typography>
                 <Typography
-                    top={'44%'}
-                    width={'50%'}
+                    top={'30%'}
+                    width={'60%'}
                     padding={2}
                     variant="h6"
                     position={'relative'}
                     zIndex={2}
                     color={'white'}
-                    sx={{ cursor: 'default', userSelect: 'none' }}
+                    sx={{ cursor: 'default', userSelect: 'none', display: { xs: 'none', sm: "flex" } }}
                 >
-                    Welcome! From here, feel free to edit the website content. You are currently limited to editing the users who can add to this page (Admins) as well as the events that are displayed on the events page. Enjoy!!
+                    Welcome! From here, feel free to edit the website content.
+                </Typography>
+                <Typography
+                    top={'30%'}
+                    width={'40%'}
+                    px={2}
+                    mb={4}
+                    variant="subtitle1"
+                    fontStyle={"italic"}
+                    position={'relative'}
+                    zIndex={2}
+                    color={'white'}
+                    textAlign={'left'}
+                    sx={{ cursor: 'default', userSelect: 'none', display: { xs: 'none', sm: "flex" } }}
+                >
+                    You are currently limited to editing the users who can add to this page (Admins) and the events that are displayed on the events page.
                 </Typography>
             </Box>
         </>
