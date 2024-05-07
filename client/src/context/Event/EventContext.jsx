@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
+
 export const EventContext = createContext();
+
 const baseAPI = import.meta.env.VITE_BASE_API;
 
 export function EventProvider({ children }) {
@@ -74,11 +77,14 @@ export function EventProvider({ children }) {
             const data = await response.json();
             if (response.ok) {
                 getEvents();
+                return true;
             } else {
                 console.error(data.message);
+                return false;
             }
         } catch (error) {
             console.error(error);
+            return false;
         }
     }
 
@@ -90,12 +96,15 @@ export function EventProvider({ children }) {
             const data = await response.json();
             if (response.ok) {
                 getEvents();
+                return true;
             } else {
                 console.error(data.message);
+                return false;
             }
         }
         catch (error) {
             console.error(error);
+            return false;
         }
     }
     const value = {

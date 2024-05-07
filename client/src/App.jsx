@@ -8,12 +8,14 @@ import {
   useLocation,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
 import { ThemeProviderWithContext } from "./theme/ThemeContext";
 import AdminLoginPage from "./pages/admin/LoginPage";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/Auth/AuthContext";
 import AdminDashboardPage from "./pages/admin/DashboardPage";
 import ProtectedRoute from "./components/ProtectedRoutes";
+import { EventProvider } from "./context/Event/EventContext";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 
 function AppContent() {
   const location = useLocation();
@@ -34,7 +36,6 @@ function AppContent() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
       <Route path="/admin" element={<AdminLoginPage />} />
       <Route
         path="/admin/dashboard"
@@ -46,13 +47,17 @@ function AppContent() {
 // Do not touch this function
 function App() {
   return (
-    <ThemeProviderWithContext>
-      <AuthProvider>
-        <Router>
-          <AppContent />
-        </Router>
-      </AuthProvider>
-    </ThemeProviderWithContext>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <ThemeProviderWithContext>
+        <AuthProvider>
+          <EventProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </EventProvider>
+        </AuthProvider>
+      </ThemeProviderWithContext>
+    </LocalizationProvider>
   );
 }
 
