@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
 
+
 export const AuthContext = createContext();
+
+const baseAPI = import.meta.env.VITE_BASE_API;
+
 
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState({});
@@ -9,7 +13,7 @@ export function AuthProvider({ children }) {
 
     async function login(email, password) {
         try {
-            const response = await fetch('http://localhost:3000/user/login', {
+            const response = await fetch(`${baseAPI}/api/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
