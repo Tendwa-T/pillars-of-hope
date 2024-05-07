@@ -2,16 +2,13 @@
 
 const path = require('path');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
 
-const stylesHandler = 'style-loader';
-
-
-
 const config = {
-    entry: './src/index.js',
+    entry: './server.js',
     target: 'node',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -24,33 +21,19 @@ const config = {
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/i,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
-            },
-
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
-        ],
-    },
 };
 
 module.exports = () => {
+
     if (isProduction) {
         config.mode = 'production';
-
+        config.externals = [nodeExternals()];
 
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
 
     } else {
         config.mode = 'development';
+        config.externals = [nodeExternals()];
     }
     return config;
 };
