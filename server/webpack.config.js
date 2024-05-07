@@ -6,8 +6,12 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const isProduction = process.env.NODE_ENV == 'production';
 
 
+const stylesHandler = 'style-loader';
+
+
+
 const config = {
-    entry: './server.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
@@ -26,6 +30,10 @@ const config = {
                 loader: 'babel-loader',
             },
             {
+                test: /\.css$/i,
+                use: [stylesHandler, 'css-loader', 'postcss-loader'],
+            },
+            {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
@@ -39,10 +47,10 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-
-
+        
+        
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-
+        
     } else {
         config.mode = 'development';
     }
