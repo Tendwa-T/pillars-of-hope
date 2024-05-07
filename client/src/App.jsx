@@ -6,9 +6,12 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import { ThemeProviderWithContext } from './theme/ThemeContext';
 import AdminLoginPage from './pages/admin/LoginPage';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/Auth/AuthContext';
 import AdminDashboardPage from './pages/admin/DashboardPage';
 import ProtectedRoute from './components/ProtectedRoutes';
+import { EventProvider } from './context/Event/EventContext';
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 
 
 
@@ -42,13 +45,17 @@ function AppContent() {
 // Do not touch this function
 function App() {
   return (
-    <AuthProvider>
-      <ThemeProviderWithContext>
-        <Router>
-          <AppContent />
-        </Router>
-      </ThemeProviderWithContext>
-    </AuthProvider>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
+      <AuthProvider>
+        <ThemeProviderWithContext>
+          <EventProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </EventProvider>
+        </ThemeProviderWithContext>
+      </AuthProvider>
+    </LocalizationProvider>
   );
 }
 
