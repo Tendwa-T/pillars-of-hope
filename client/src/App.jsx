@@ -1,55 +1,64 @@
 /* eslint-disable no-unused-vars */
-import './App.css';
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import { ThemeProviderWithContext } from './theme/ThemeContext';
-import AdminLoginPage from './pages/admin/LoginPage';
-import { AuthProvider } from './context/AuthContext';
-import AdminDashboardPage from './pages/admin/DashboardPage';
-import ProtectedRoute from './components/ProtectedRoutes';
-
-
+import "./App.css";
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import { ThemeProviderWithContext } from "./theme/ThemeContext";
+import AdminLoginPage from "./pages/admin/LoginPage";
+import { AuthProvider } from "./context/Auth/AuthContext";
+import AdminDashboardPage from "./pages/admin/DashboardPage";
+import ProtectedRoute from "./components/ProtectedRoutes";
+import { EventProvider } from "./context/Event/EventContext";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 
 function AppContent() {
   const location = useLocation();
   useEffect(() => {
     const titleMap = {
       // Add your route and Its title here
-      '/': 'Home',
-      '/about': 'About',
-      '/admin': 'Admin Login',
-      '/events': 'Events',
-      '/admin/dashboard': 'Admin Dashboard',
-      '/admin/events': 'Admin Events',
+      "/": "Home",
+      "/about": "About",
+      "/admin": "Admin Login",
+      "/events": "Events",
+      "/admin/dashboard": "Admin Dashboard",
+      "/admin/events": "Admin Events",
     };
-    const title = titleMap[location.pathname] || 'Page Not Found';
+    const title = titleMap[location.pathname] || "Page Not Found";
     document.title = `Pillars of Hope - ${title}`;
-  }, [location])
+  }, [location]);
   //Add your routes below
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
       <Route path="/admin" element={<AdminLoginPage />} />
-      <Route path="/admin/dashboard" element={
-        <ProtectedRoute element={<AdminDashboardPage />} />
-      } />
+      <Route
+        path="/admin/dashboard"
+        element={<ProtectedRoute element={<AdminDashboardPage />} />}
+      />
     </Routes>
-  )
+  );
 }
 // Do not touch this function
 function App() {
   return (
-    <AuthProvider>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
       <ThemeProviderWithContext>
-        <Router>
-          <AppContent />
-        </Router>
+        <AuthProvider>
+          <EventProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </EventProvider>
+        </AuthProvider>
       </ThemeProviderWithContext>
-    </AuthProvider>
+    </LocalizationProvider>
   );
 }
 
-export default App
+export default App;

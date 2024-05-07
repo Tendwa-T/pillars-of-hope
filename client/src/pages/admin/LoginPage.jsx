@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@mui/material";
 import { useState } from "react";
-import { useAuth } from "../../context/useAuth";
+import { useAuth } from "../../context/Auth/useAuth";
 import { useNavigate } from "react-router-dom";
 import AlertComponent from "../../components/admin/AlertComponent";
 
