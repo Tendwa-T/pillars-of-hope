@@ -11,7 +11,7 @@ const stylesHandler = 'style-loader';
 
 
 const config = {
-    entry: './src/server.js',
+    entry: './server.js',
     target: 'node',
     output: {
         path: path.resolve(__dirname, 'dist'),
