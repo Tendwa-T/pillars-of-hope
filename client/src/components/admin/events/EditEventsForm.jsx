@@ -81,7 +81,7 @@ export default function EditEventsForm({ eventData, }) {
             image: imageURL
         };
         if ((await updateEvent(updatedEvent))) {
-            handleOpen();
+            setShowModal(false);
             setLoading(false);
         }
 

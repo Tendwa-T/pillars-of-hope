@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 
 
 export default function AdminEventsSection() {
-    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackConfig, setSnackConfig] = useState({ openSnackbar: false, message: '', serverity: 'info' });
     const { events } = useEvent();
     const { isAuthenticated } = useAuth();
 
@@ -19,7 +19,7 @@ export default function AdminEventsSection() {
         if (reason === 'clickaway') {
             return;
         }
-        setOpenSnackbar(false);
+        setSnackConfig({ ...snackConfig, openSnackbar: false });
     };
 
     function DeleteEvent({ eventID }) {
@@ -33,8 +33,13 @@ export default function AdminEventsSection() {
         };
         async function handleDelete() {
             if (await deleteEvent(eventID)) {
+                setSnackConfig({ openSnackbar: true, message: 'Event Deleted', serverity: 'success' });
+                handleClose();
+            } else {
+                setSnackConfig({ openSnackbar: true, message: 'Error Deleting Event', serverity: 'error' });
                 handleClose();
             }
+
         }
         const style = {
             position: 'absolute',
@@ -83,14 +88,14 @@ export default function AdminEventsSection() {
 
 
     return (
-        <Box mb={20} mt={2} sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
-            <Typography variant="h2" textAlign={'center'}>
+        <Box mt={2} sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
+            <Typography variant="h2" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>
                 Events
             </Typography>
 
             {events && events.length === 0 &&
-                <Box px={2} display={'flex'} justifyContent={'Center'}>
-                    <Typography variant="h6" textAlign={'center'}>No events available</Typography>
+                <Box px={2} display={'flex'} justifyContent={'Center'} >
+                    <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>No events available</Typography>
                 </Box>
             }
             {isAuthenticated && <Box px={2} display={'flex'} justifyContent={'end'}>
@@ -105,10 +110,10 @@ export default function AdminEventsSection() {
 
                         <CardMedia image={event.image} sx={{ height: 200, width: '100%', }} />
                         <CardContent>
-                            <Typography variant="h5" textAlign={'center'} fontWeight={'bold'}>{event.title}</Typography>
-                            <Typography variant="body1">{event.description}</Typography>
-                            <Typography variant="caption">{moment(event.date).format("dddd, MMMM Do YYYY")}</Typography><br></br>
-                            <Typography variant="caption">{moment(event.time).format("h:mm a")}</Typography>
+                            <Typography variant="h5" textAlign={'center'} fontWeight={'bold'} sx={{ cursor: 'default', userSelect: 'none', }}>{event.title}</Typography>
+                            <Typography variant="body1" sx={{ cursor: 'default', userSelect: 'none', }}>{event.description}</Typography>
+                            <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.date).format("dddd, MMMM Do YYYY")}</Typography><br></br>
+                            <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.time).format("h:mm a")}</Typography>
                         </CardContent>
                         {isAuthenticated && <CardActions sx={{ display: { xs: 'block', sm: 'flex' }, justifyContent: 'space-between', width: "100%" }}>
                             <DeleteEvent eventID={event._id} />
@@ -120,9 +125,9 @@ export default function AdminEventsSection() {
                 ))}
 
             </Box>
-            <Snackbar open={openSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'left' }} autoHideDuration={6000} onClose={handleSnackbarClose}>
-                <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
-                    Event deleted successfully!
+            <Snackbar open={snackConfig.openSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                <Alert onClose={handleSnackbarClose} severity={snackConfig.serverity} sx={{ width: '100%' }}>
+                    {snackConfig.message}
                 </Alert>
             </Snackbar>
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import { TextField, Box, Button, Modal, Typography, CircularProgress } from '@mui/material';
+import { TextField, Box, Button, Modal, Typography, CircularProgress, Snackbar, Alert } from '@mui/material';
 import { CloudUpload } from '@mui/icons-material';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
@@ -23,11 +23,19 @@ export default function AddEventsForm({ show }) {
     const [imageURL, setImageURL] = useState();
     const [loading, setLoading] = useState(false);
     const { addEvent } = useEvent();
+    const [snackConfig, setSnackConfig] = useState({ openSnackbar: false, message: '', serverity: 'success' });
 
     const handleOpen = () => {
         setOpen(!open);
         handleCancel();
     }
+
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackConfig({ ...snackConfig, openSnackbar: false });
+    };
 
 
     const VisuallyHiddenInput = styled('input')({
@@ -76,8 +84,12 @@ export default function AddEventsForm({ show }) {
             image: imageURL
         };
         if ((await addEvent(event))) {
+            setSnackConfig({ openSnackbar: true, message: 'Event Added', serverity: 'success' });
             handleOpen();
             setLoading(false);
+        } else {
+            setSnackConfig({ openSnackbar: true, message: 'Error Adding Event', serverity: 'error' });
+            setLoading(false)
         }
 
         setLoading(false);
@@ -186,6 +198,11 @@ export default function AddEventsForm({ show }) {
 
                 </Box>
             </Modal>
+            <Snackbar open={snackConfig.openSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                <Alert onClose={handleSnackbarClose} severity={snackConfig.serverity} sx={{ width: '100%' }}>
+                    {snackConfig.message}
+                </Alert>
+            </Snackbar>
         </>
 
     )
