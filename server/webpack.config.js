@@ -11,7 +11,8 @@ const stylesHandler = 'style-loader';
 
 
 const config = {
-    entry: './src/index.js',
+    entry: './src/server.js',
+    target: 'node',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
@@ -28,10 +29,7 @@ const config = {
             {
                 test: /\.(js|jsx)$/i,
                 loader: 'babel-loader',
-            },
-            {
-                test: /\.css$/i,
-                use: [stylesHandler, 'css-loader', 'postcss-loader'],
+                exclude: /node_modules/,
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -47,10 +45,10 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
+
+
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-        
+
     } else {
         config.mode = 'development';
     }
