@@ -1,4 +1,3 @@
-
 import DrawerComponent from "../components/admin/Drawer";
 import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -9,12 +8,12 @@ import AboutPage from "../components/AboutSection";
 import AdminEventsSection from "../components/admin/EventsSection";
 
 export default function HomePage() {
-    return (
-        <> 
+  return (
+    <>
       <DrawerAppBar />
       <Home />
-            <AdminEventsSection />
-            <AboutPage />
-        </>
-    );
+      <AdminEventsSection />
+      <AboutPage />
+    </>
+  );
 }
