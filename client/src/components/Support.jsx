@@ -11,25 +11,25 @@ export default function Support() {
             <div className='grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 gap-10 p-10'>
 
               <div className="hover:animate-pulse size-96 bg-white rounded-lg hover:grow-0 sm:w-96 sm:h-full" >
-                  <img src="../public/assets/children.jpeg" alt="Coming up.." className="mb-3 "/>
+                  <img src="assets/children.jpeg" alt="Coming up.." className="mb-3 "/>
                   <h1 className="font-bold mb-2">Help for School fees</h1>
                   <p className="text-sm ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 
               </div>
 
               <div className="size-96 bg-white rounded-lg">
-                <img src="../public/assets/children.jpeg" alt="Coming up.." className="mb-3"/>
+                <img src="assets/children.jpeg" alt="Coming up.." className="mb-3"/>
                 <h1 className="font-bold mb-2">Help for Bills</h1>
                 <p className="text-sm ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
               </div>
 
               <div className="size-96 bg-white rounded-lg">
-                <img src="../public/assets/children.jpeg" alt="Coming up.." className="mb-3"/>
+                <img src="/assets/children.jpeg" alt="Coming up.." className="mb-3"/>
                 <h1 className="font-bold mb-2">Help for Food and clothing</h1>
                 <p className="text-sm ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
               </div>
 
               <div className="size-96 bg-white rounded-lg">
-                <img src="../src/assets/children.jpeg" alt="Coming up.." className="mb-3"/>
+                <img src="assets/children.jpeg" alt="Coming up.." className="mb-3"/>
                 <h1 className="font-bold mb-2">Help for Land Acquisition</h1>
                 <p className="text-sm ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
               </div>
