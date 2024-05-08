@@ -1,5 +1,10 @@
 import { Box } from "@mui/material";
 
+import {
+  Home as HomeIcon,
+  Info as InfoIcon,
+  Help as HelpIcon,
+} from "@mui/icons-material";
 
 export default function Home() {
   return (
@@ -7,30 +12,28 @@ export default function Home() {
       <Box
         sx={{
           bgcolor: "#004e40",
-          height: "98vh",
+          height: "86vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          marginBottom: "10em",
         }}
       >
         <Box
           sx={{
-            height: "98vh",
+            height: "86vh",
             width: "90%",
-            marginLeft: "auto", //align the box to the left
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-           
+            marginLeft: "auto",
+            backgroundColor: "#004e40",
           }}
         >
           <Box
             sx={{
-              height: "85vh",
+              height: "75vh",
               width: "90%",
               marginTop: "4em",
-              backgroundColor: "blue",
               display: "flex",
               justifyContent: "space-between",
-            
             }}
           >
             <Box
@@ -42,19 +45,82 @@ export default function Home() {
             <Box
               sx={{
                 flex: 1, //take up the remaining width
-                backgroundColor: "red",
+                position: "relative",
+                overflow: "hidden",
               }}
-            ></Box>
+            >
+              <img
+                src="public/assets/6.jpg"
+                alt="children"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover", // Ensure the image covers the entire container
+                }}
+              />
+            </Box>
           </Box>
           <Box
             sx={{
-              height: "4em",
+              height: "9em",
               width: "90%",
-
-              backgroundColor: "green ",
+              borderRadius: "20px 20px 20px 20px",
+              backgroundColor: "#fed65c ",
               display: "flex",
+              position: "relative",
+              top: "-3em",
+              zIndex: 1,
             }}
-          ></Box>
+          >
+            <Box
+              sx={{
+                display: "flex",
+
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <HomeIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
+              <span>Text 1</span>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <InfoIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
+              <span>Text 2</span>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <HelpIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
+              <span>Text 3</span>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <HomeIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
+              <span>Text 4</span>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </>
