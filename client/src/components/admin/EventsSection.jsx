@@ -58,7 +58,7 @@ export default function AdminEventsSection() {
 
         return (
 
-            <>
+            <section id="events">
                 <Button onClick={handleOpen} color='error' variant='contained'>Delete</Button>
                 <Modal
                     open={open}
@@ -77,7 +77,7 @@ export default function AdminEventsSection() {
                     </Box>
                 </Modal>
 
-            </>
+            </section>
 
         );
     }
