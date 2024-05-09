@@ -43,14 +43,14 @@ export default function DrawerAppBar() {
         <Toolbar
           sx={{
             marginRight: {
-              sm: "25em",
+              sm: "20em",
               xs: "auto",
             },
           }}
         >
           {!isSmallScreen && (
-            <Box sx={{ paddingLeft: "10em", marginTop: "2.5em" }}>
-              <img src="" alt="Logo" style={{ height: "40px" }} />
+            <Box sx={{ paddingLeft: "5em"}}>
+              <img src="assets/logo.png" alt="Logo" style={{ height: "50px" }} />
             </Box>
           )}
           <Box sx={{ flexGrow: 1 }} />
@@ -63,7 +63,7 @@ export default function DrawerAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff" }}>
                 {item}

@@ -8,6 +8,8 @@ export default function HomePage() {
   return (
     <>
       <Home />
+      <AdminEventsSection />
+      {/* <AboutPage /> */}
     </>
   );
 }
