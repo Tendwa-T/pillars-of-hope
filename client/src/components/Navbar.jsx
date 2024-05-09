@@ -53,6 +53,9 @@ export default function DrawerAppBar() {
       <ListItemButton onClick={() => handleItemClick("about")}>
         <ListItemText primary="About" />
       </ListItemButton>
+      <ListItemButton onClick={() => handleItemClick("events")}>
+        <ListItemText primary="Events" />
+      </ListItemButton>
       <ListItemButton onClick={() => handleItemClick("support")}>
         <ListItemText primary="Support" />
       </ListItemButton>
@@ -117,6 +120,12 @@ export default function DrawerAppBar() {
               onClick={() => handleItemClick("about")}
             >
               About
+            </Button>
+            <Button
+              sx={{ color: "#fff", marginLeft: "1em" }}
+              onClick={() => handleItemClick("events")}
+            >
+              Events
             </Button>
             <Button
               sx={{ color: "#fff", marginLeft: "1em" }}
