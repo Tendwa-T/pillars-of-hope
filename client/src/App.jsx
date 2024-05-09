@@ -25,6 +25,7 @@ function AppContent() {
       "/": "Home",
       "/about": "About",
       "/admin": "Admin Login",
+      "/support":"Support",
       "/events": "Events",
       "/admin/dashboard": "Admin Dashboard",
       "/admin/events": "Admin Events",
