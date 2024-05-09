@@ -1,0 +1,29 @@
+
+
+[
+  {
+    "id ": 1,
+    "title": "Help for school fees",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "img": "/assets/1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Help for food & clothing",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "img": "/assets/1.jpg"
+  },
+
+  {
+    "id": 3,
+    "title": "Help for Land acquisition",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "img": "/assets/1.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Help for bills",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "img": "/assets/1.jpg"
+  }
+]
