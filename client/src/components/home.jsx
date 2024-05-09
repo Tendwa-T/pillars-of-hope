@@ -1,10 +1,4 @@
-import { Box } from "@mui/material";
-
-import {
-  Home as HomeIcon,
-  Info as InfoIcon,
-  Help as HelpIcon,
-} from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 
 export default function Home() {
   return (
@@ -12,7 +6,7 @@ export default function Home() {
       <Box
         sx={{
           bgcolor: "#004e40",
-          height: "86vh",
+          minheight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -21,32 +15,77 @@ export default function Home() {
       >
         <Box
           sx={{
-            height: "86vh",
-            width: "90%",
+            height: "88vh",
+            width: "80%",
             marginLeft: "auto",
-            backgroundColor: "#004e40",
+            marginRight: "auto",
           }}
         >
           <Box
             sx={{
-              height: "75vh",
-              width: "90%",
-              marginTop: "4em",
+              height: "74vh",
+              width: "100%",
+              marginTop: { xs: "1em", sm: "4em" },
               display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
               justifyContent: "space-between",
             }}
           >
             <Box
               sx={{
-                width: "55%",
-                backgroundColor: "primary.main",
+                overflow: "hidden",
+                width: { xs: "100%", sm: "50%" },
+                order: { xs: 1, sm: 1 },
+                marginBottom: { xs: "3em", sm: "auto" },
+                maxWidth: "100%",
               }}
-            ></Box>
+            >
+              <Typography
+                variant="h2"
+                sx={{
+                  marginTop: "1.5em",
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                }}
+              >
+                Charity is an
+              </Typography>
+              <Typography
+                variant="h2"
+                gutterBottom
+                sx={{
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                  marginBottom: { xs: "0.5em", sm: "0" },
+                }}
+              >
+                Act of a Sort Heart.
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#F0F0F0",
+                  marginBottom: { xs: "4em", sm: "0" },
+                }}
+              >
+                It has survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing .
+              </Typography>
+            </Box>
+
             <Box
               sx={{
-                flex: 1, //take up the remaining width
+                width: { xs: "100%", sm: "50%" },
                 position: "relative",
                 overflow: "hidden",
+                order: { xs: 1, sm: 1 },
+                marginTop: { xs: "0", sm: "0" },
               }}
             >
               <img
@@ -58,67 +97,6 @@ export default function Home() {
                   objectFit: "cover", // Ensure the image covers the entire container
                 }}
               />
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              height: "9em",
-              width: "90%",
-              borderRadius: "20px 20px 20px 20px",
-              backgroundColor: "#fed65c ",
-              display: "flex",
-              position: "relative",
-              top: "-3em",
-              zIndex: 1,
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <HomeIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
-              <span>Text 1</span>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <InfoIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
-              <span>Text 2</span>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <HelpIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
-              <span>Text 3</span>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              <HomeIcon sx={{ fontSize: 30, marginRight: "0.5em" }} />
-              <span>Text 4</span>
             </Box>
           </Box>
         </Box>
