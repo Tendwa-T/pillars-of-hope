@@ -34,8 +34,16 @@ export default function DrawerAppBar() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Box sx={{ marginLeft: "3.5em", padding: "2em" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+      }}
+    >
+      <Box sx={{ padding: "2em" }}>
         <img src="assets/logo.png" alt="Logo" style={{ height: "50px" }} />
       </Box>
       <Divider />
