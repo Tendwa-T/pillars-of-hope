@@ -44,7 +44,11 @@ export default function DrawerAppBar() {
       }}
     >
       <Box sx={{ padding: "2em" }}>
-        <img src="assets/logo.png" alt="Logo" style={{ height: "50px" }} />
+        <img
+          src="assets/logo.png"
+          alt="Logo"
+          style={{ height: "50px", borderRadius: "6px" }}
+        />
       </Box>
       <Divider />
       <ListItemButton onClick={() => handleItemClick("home")}>
@@ -78,7 +82,7 @@ export default function DrawerAppBar() {
               <img
                 src="assets/logo.png"
                 alt="Logo"
-                style={{ height: "50px" }}
+                style={{ height: "50px", borderRadius: "6px" }}
               />
             </Box>
           )}
@@ -87,9 +91,13 @@ export default function DrawerAppBar() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ color: "#fff", marginLeft: { xs: "1.5em", sm: "0" } }}
+              sx={{
+                color: "#fff",
+                marginLeft: { xs: "1.5em", sm: "0" },
+                marginTop: { xs: "1em", sm: "0" },
+              }}
             >
-              Pillars of Hope Children Home
+              Pillars of Hope Children's Home
             </Typography>
           </Box>
 
@@ -101,7 +109,7 @@ export default function DrawerAppBar() {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ marginTop: { xs: "0.8em", sm: "0" } }} />
           </IconButton>
           <Box
             sx={{

@@ -27,6 +27,7 @@ export default function Home() {
               height: "74vh",
               width: "100%",
               marginTop: { xs: "1em", sm: "4em" },
+              
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
               justifyContent: "space-between",
@@ -37,14 +38,14 @@ export default function Home() {
                 overflow: "hidden",
                 width: { xs: "100%", sm: "50%" },
                 order: { xs: 1, sm: 1 },
-                marginBottom: { xs: "3em", sm: "auto" },
-                maxWidth: "100%",
+                marginTop: { xs: "auto", sm: "0" },
+                marginBottom: { xs: "auto", sm: "0" },
               }}
             >
               <Typography
                 variant="h2"
                 sx={{
-                  marginTop: "1em",
+                  marginTop: { xs: "0", sm: "1em" },
                   color: "#F0F0F0",
                   "@media (max-width: 900px)": {
                     fontSize: "2rem",
@@ -82,7 +83,7 @@ export default function Home() {
                 variant="body1"
                 sx={{
                   color: "#F0F0F0",
-                  marginBottom: { xs: "4em", sm: "0" },
+                  marginBottom: { xs: "15em", sm: "0" },
                 }}
               >
                 Pillars of Hope Children's Home stands as a beacon of
@@ -100,7 +101,8 @@ export default function Home() {
                 position: "relative",
                 overflow: "hidden",
                 order: { xs: 1, sm: 1 },
-                marginTop: { xs: "0", sm: "0" },
+                marginTop: { xs: "auto", sm: "0" },
+                marginBottom: { xs: "auto", sm: "0" },
               }}
             >
               <img
@@ -109,7 +111,8 @@ export default function Home() {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover", // Ensure the image covers the entire container
+                  objectFit: "cover",
+                  marginBottom:{xs:"2em", sm:"0"}
                 }}
               />
             </Box>
