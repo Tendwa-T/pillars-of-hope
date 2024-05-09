@@ -89,7 +89,7 @@ export default function Home() {
               }}
             >
               <img
-                src="public/assets/6.jpg"
+                src="/assets/6.jpg"
                 alt="children"
                 style={{
                   width: "100%",
