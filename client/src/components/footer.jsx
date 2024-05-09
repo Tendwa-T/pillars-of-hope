@@ -1,54 +1,52 @@
-import {
-    Box,
-    Typography,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    
-    
-} from "@mui/material";
+import { Button, Stack, Container } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 
-
-export default function Footer(){
-   return(
-    
-    <section className=" flex gap-20 justify-center items-center w-screen p-20 bg-slate-100">
-        <Box className="rounded-lg">
-            <img className="size-58 justify-center items-center rounded-lg" src="../../public/assets/children.jpeg" alt="Loading..." />
-            <Typography variant="h5" className="text-center mt-2">Pillars Of Hope Founder</Typography>
-            <Typography variant="h6" className="text-center">Lorem ipsum dolor sit amet</Typography>
-        </Box>
-        <Box>
-            <List className="flex mt-4 p-8">
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                    <ListItemText primary="About" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                    <ListItemText primary="Events" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                    <ListItemText primary="Support" />
-                    </ListItemButton>
-                </ListItem>
-
-        </List>
-        </Box>
-        
-        
-    </section>
-   
-    
-    
+export default function Footer() {
+  return (
+    <Container
+      maxWidth="screen"
+      xs={6}
+      sm={3}
+      
+      sx={{
+        display: "flex",
+        gap: 4,
+        padding: 4,
+        bgcolor: "#004e40",
+      }}
+    >
+      <Stack direction="row" spacing={2}>
+        <Button
+          sx={{ bgcolor: "#fed75e" }}
+          variant="contained"
+          startIcon={<PhoneIcon />}
+        >
+          Phone <br /> 123-456-7890
+        </Button>
+        <Button
+          sx={{ bgcolor: "#fed75e" }}
+          variant="contained"
+          startIcon={<LocationOnIcon />}
+        >
+          Athi River, Mavoko <br /> Machakos County
+        </Button>
+        <Button
+          sx={{ bgcolor: "#fed75e", roundedRadius: 2 }}
+          variant="contained"
+        >
+          Mpesa paybill: 874 580 <br />
+          Cooperative bank branch: Athi River <br />
+          Account No: 01128564984200 <br />
+          Account Name: Pillars Of Hope Childrens Home
+        </Button>
+        <IconButton size="medium">
+          <FacebookIcon sx={{bgcolor:"#fff"}}/>
+        </IconButton>
+      </Stack>
+    </Container>
+  );
 }
