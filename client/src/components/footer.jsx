@@ -6,29 +6,22 @@ import {
     ListItemButton,
     ListItemText,
     
+    
 } from "@mui/material";
 
 
 
 export default function Footer(){
-   
    return(
-    <Box 
-    sx={{
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        gap: 10,
-
-    }}
-    >
+    
+    <section className=" flex gap-20 justify-center items-center w-screen p-20 bg-slate-100">
         <Box className="rounded-lg">
-            <img src="../../public/assets/children.jpeg" alt="Loading..." />
-            <h3>Pillars Of Hope Founder</h3>
-            <Typography variant="h5">Lorem ipsum dolor sit amet</Typography>
+            <img className="size-58 justify-center items-center rounded-lg" src="../../public/assets/children.jpeg" alt="Loading..." />
+            <Typography variant="h5" className="text-center mt-2">Pillars Of Hope Founder</Typography>
+            <Typography variant="h6" className="text-center">Lorem ipsum dolor sit amet</Typography>
         </Box>
         <Box>
-            <List>
+            <List className="flex mt-4 p-8">
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemText primary="Home" />
@@ -52,8 +45,10 @@ export default function Footer(){
 
         </List>
         </Box>
-        <Typography variant="h6">Pillars Of Hope</Typography>
-    </Box>
+        
+        
+    </section>
+   
    )
     
     
