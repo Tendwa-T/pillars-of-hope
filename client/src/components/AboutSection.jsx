@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   Box,
   Card,
@@ -13,38 +13,38 @@ export default function AboutPage() {
   const cardData = [
     {
       title: "A safe, comfortable home",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "We have been through many challenges. We have continued to push for a comfortable home away from the social ills of yester years for our children.",
     },
     {
       title: "Colorful Childhood",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "We are not lost to the innocence of childhood. In this regard, we have cultivated an environment of ease within our home to enable our children explore the full extent of their childhood.",
     },
     {
       title: "Education for the girl child",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "Our core focus is the equipping and enabling of the girl child. We believe that when you educate a woman, you empower a community with its children.",
     },
     {
       title: "A home free from social stigma",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "Our children are encouraged to live as siblings amongst each others. We foster an environment of mutual and self-acceptance amongst our children, as a means of achieving a stigma-free lifestyle.",
     },
     {
       title: "Empowerment for young people",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "We help push for equality in the distribution of resources for our young people within the home and in the community. We also support activities like acrobatics, dancing and embroidery as a means to combat boredom.",
     },
 
     {
       title: "Enrichment of the mind",
-      image: "../public/assets/children.jpeg",
+      image: "/assets/children.jpeg",
       description:
         "We have driven for and put together a community library to help the children develop their literary capacity. The library is suited to cater for both academic and non-academic concerns as well as novels for our young adults.",
     },
@@ -101,7 +101,7 @@ export default function AboutPage() {
         >
           <Box sx={{ mx: 10, color: "text.secondary" }}>
             <p>
-              Good Samaritan Children's Home and Rehabilitation Center is a
+              Good Samaritan Childrens Home and Rehabilitation Center is a
               Non-profit Organization established in 1991 under the section 10
               of the non-governmental organization co-ordination act . We help
               orphaned, abused, neglected or otherwise vulnerable children from
@@ -112,7 +112,7 @@ export default function AboutPage() {
             </p>
           </Box>
           <Box sx={{ mb: 5, mx: 10 }}>
-            <div class="h-56 grid grid-cols-2 gap-4 content-around ...">
+            <div className="h-56 grid grid-cols-2 gap-4 content-around ...">
               <div>
                 <h1 className="font-bold text-2xl text-sky-400">33</h1>
                 <p>Years of Experience</p>
