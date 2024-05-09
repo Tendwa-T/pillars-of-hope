@@ -1,4 +1,3 @@
-
 import Home from "../components/home";
 import DrawerAppBar from "../components/Navbar";
 import AboutPage from "../components/AboutSection";
