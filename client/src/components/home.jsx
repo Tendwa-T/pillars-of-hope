@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 export default function Home() {
   return (
-    <>
+    <section id="home">
       <Box
         sx={{
           bgcolor: "#004e40",
@@ -11,6 +11,7 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           marginBottom: "10em",
+          marginTop: "5em",
         }}
       >
         <Box
@@ -43,14 +44,25 @@ export default function Home() {
               <Typography
                 variant="h2"
                 sx={{
-                  marginTop: "1.5em",
+                  marginTop: "1em",
                   color: "#F0F0F0",
                   "@media (max-width: 900px)": {
                     fontSize: "2rem",
                   },
                 }}
               >
-                Charity is an
+                Tender Acts,
+              </Typography>
+              <Typography
+                variant="h2"
+                sx={{
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                }}
+              >
+                Spreading Love,
               </Typography>
               <Typography
                 variant="h2"
@@ -60,11 +72,12 @@ export default function Home() {
                   "@media (max-width: 900px)": {
                     fontSize: "2rem",
                   },
-                  marginBottom: { xs: "0.5em", sm: "0" },
+                  marginBottom: { xs: "0.5em", sm: "0.3em" },
                 }}
               >
-                Act of a Sort Heart.
+                Touching Souls.
               </Typography>
+
               <Typography
                 variant="body1"
                 sx={{
@@ -72,10 +85,12 @@ export default function Home() {
                   marginBottom: { xs: "4em", sm: "0" },
                 }}
               >
-                It has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing .
+                Pillars of Hope Children's Home stands as a beacon of
+                compassion, offering a sanctuary for the vulnerable children in
+                Kenya. Together, let's weave a tapestry of hope and opportunity,
+                nurturing their dreams and empowering their futures. Join our
+                circle of kindness and be a catalyst for change, because every
+                child deserves to blossom in a garden of love and possibility.
               </Typography>
             </Box>
 
@@ -89,7 +104,7 @@ export default function Home() {
               }}
             >
               <img
-                src="public/assets/6.jpg"
+                src="/assets/6.jpg"
                 alt="children"
                 style={{
                   width: "100%",
@@ -101,6 +116,6 @@ export default function Home() {
           </Box>
         </Box>
       </Box>
-    </>
+    </section>
   );
 }
