@@ -1,62 +1,124 @@
-import { Box } from "@mui/material";
-
+import { Box, Typography } from "@mui/material";
 
 export default function Home() {
   return (
-    <>
+    <section id="home">
       <Box
         sx={{
           bgcolor: "#004e40",
-          height: "98vh",
+          minheight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          marginBottom: "10em",
+          marginTop: "5em",
         }}
       >
         <Box
           sx={{
-            height: "98vh",
-            width: "90%",
-            marginLeft: "auto", //align the box to the left
-            backgroundColor: "rgba(255, 255, 255, 0.8)",
-           
+            height: "88vh",
+            width: "80%",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
           <Box
             sx={{
-              height: "85vh",
-              width: "90%",
-              marginTop: "4em",
-              backgroundColor: "blue",
+              height: "74vh",
+              width: "100%",
+              marginTop: { xs: "1em", sm: "4em" },
+              
               display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
               justifyContent: "space-between",
-            
             }}
           >
             <Box
               sx={{
-                width: "55%",
-                backgroundColor: "primary.main",
+                overflow: "hidden",
+                width: { xs: "100%", sm: "50%" },
+                order: { xs: 1, sm: 1 },
+                marginTop: { xs: "auto", sm: "0" },
+                marginBottom: { xs: "auto", sm: "0" },
               }}
-            ></Box>
+            >
+              <Typography
+                variant="h2"
+                sx={{
+                  marginTop: { xs: "0", sm: "1em" },
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                }}
+              >
+                Tender Acts,
+              </Typography>
+              <Typography
+                variant="h2"
+                sx={{
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                }}
+              >
+                Spreading Love,
+              </Typography>
+              <Typography
+                variant="h2"
+                gutterBottom
+                sx={{
+                  color: "#F0F0F0",
+                  "@media (max-width: 900px)": {
+                    fontSize: "2rem",
+                  },
+                  marginBottom: { xs: "0.5em", sm: "0.3em" },
+                }}
+              >
+                Touching Souls.
+              </Typography>
+
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#F0F0F0",
+                  marginBottom: { xs: "15em", sm: "0" },
+                }}
+              >
+                Pillars of Hope Children's Home stands as a beacon of
+                compassion, offering a sanctuary for the vulnerable children in
+                Kenya. Together, let's weave a tapestry of hope and opportunity,
+                nurturing their dreams and empowering their futures. Join our
+                circle of kindness and be a catalyst for change, because every
+                child deserves to blossom in a garden of love and possibility.
+              </Typography>
+            </Box>
+
             <Box
               sx={{
-                flex: 1, //take up the remaining width
-                backgroundColor: "red",
+                width: { xs: "100%", sm: "50%" },
+                position: "relative",
+                overflow: "hidden",
+                order: { xs: 1, sm: 1 },
+                marginTop: { xs: "auto", sm: "0" },
+                marginBottom: { xs: "auto", sm: "0" },
               }}
-            ></Box>
+            >
+              <img
+                src="/assets/6.jpg"
+                alt="children"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  marginBottom:{xs:"2em", sm:"0"}
+                }}
+              />
+            </Box>
           </Box>
-          <Box
-            sx={{
-              height: "4em",
-              width: "90%",
-
-              backgroundColor: "green ",
-              display: "flex",
-            }}
-          ></Box>
         </Box>
       </Box>
-    </>
+    </section>
   );
 }
