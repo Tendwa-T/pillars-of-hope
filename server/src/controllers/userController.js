@@ -11,6 +11,16 @@ async function createUser(req, res) {
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
+        const returnUser = await User.findOne({ email, isActive: false });
+        if (returnUser) {
+            const user = await User.findByIdAndUpdate(returnUser._id, {
+                name,
+                password: hashedPassword,
+                isActive: true
+            });
+            return res.status(201).json({ userID: user._id, userName: user.name });
+        }
+
         const user = await User.create({
             name,
             email,
@@ -31,7 +41,7 @@ async function loginUser(req, res) {
         return res.status(400).json({ message: 'Email and password are required' });
     }
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email, isActive: true });
         if (!user) {
             return res.status(404).json({ message: 'User not found', authenticated: false });
         }

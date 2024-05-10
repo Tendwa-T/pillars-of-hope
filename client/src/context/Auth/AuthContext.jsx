@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 export const AuthContext = createContext();
@@ -34,12 +35,32 @@ export function AuthProvider({ children }) {
             }
         } catch (error) {
             console.log(error);
+            return false;
         }
 
     }
 
-    function logout() {
-        setIsAuthenticated(false);
+    async function logout() {
+        try {
+            const token = currentUser.token
+            const response = await fetch(`${baseAPI}/api/user/logout/:${currentUser.userID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`,
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Logout failed');
+            }
+            setCurrentUser({})
+            setIsAuthenticated(false);
+            return true;
+
+        } catch (error) {
+            console.log(error)
+            return true;
+        }
     }
 
     const value = {
@@ -51,4 +72,8 @@ export function AuthProvider({ children }) {
         logout,
     };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+AuthProvider.propTypes = {
+    children: PropTypes.element.isRequired
 }

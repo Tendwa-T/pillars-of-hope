@@ -16,6 +16,7 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 import { EventProvider } from "./context/Event/EventContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { UserProvider } from "./context/Users/UserContext";
 
 function AppContent() {
   const location = useLocation();
@@ -52,9 +53,11 @@ function App() {
       <ThemeProviderWithContext>
         <AuthProvider>
           <EventProvider>
-            <Router>
-              <AppContent />
-            </Router>
+            <UserProvider>
+              <Router>
+                <AppContent />
+              </Router>
+            </UserProvider>
           </EventProvider>
         </AuthProvider>
       </ThemeProviderWithContext>

@@ -1,5 +1,5 @@
 {
-  "name": "my-webpack-project",
+  "name": "pohc-backend",
   "version": "1.0.0",
   "description": "My webpack project",
   "main": "server.js",
