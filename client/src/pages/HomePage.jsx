@@ -14,7 +14,6 @@ export default function HomePage() {
       <AboutPage />
       <SupportComponent/>
       <Footer/>
-
     </>
   );
 }

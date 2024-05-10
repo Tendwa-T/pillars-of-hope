@@ -11,7 +11,7 @@ import { useEvent } from '../../../context/Event/useEvent';
 
 const baseAPI = import.meta.env.VITE_BASE_API;
 
-export default function EditEventsForm({ eventData, }) {
+export default function EditEventsForm({ eventData }) {
     const [showModal, setShowModal] = useState(false);
     const [eventID, setEventID] = useState(eventData._id);
     const [title, setTitle] = useState(eventData.title);

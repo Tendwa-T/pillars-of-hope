@@ -121,5 +121,5 @@ export function EventProvider({ children }) {
 }
 
 EventProvider.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.element.isRequired,
 };

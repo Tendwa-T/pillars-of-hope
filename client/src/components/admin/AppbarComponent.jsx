@@ -15,19 +15,17 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useAuth } from '../../context/Auth/useAuth';
 import { ThemeContext } from '../../theme/ThemeContext';
 import { ContrastOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function AppBarComponent() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-
+    const navigator = useNavigate();
     const { toggleTheme, theme } = useContext(ThemeContext);
 
     const { logout } = useAuth();
-
-    const pages = ['Dashboard', 'Events', 'Users'];
-    const settings = ['Profile'];
 
 
     const handleOpenNavMenu = (event) => {
@@ -42,8 +40,14 @@ export default function AppBarComponent() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     }
+
+    const scrollToSection = (section) => {
+        const element = document.getElementById(section);
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
-        <AppBar position="static" sx={{
+        <AppBar sx={{
             zIndex: (theme) => theme.zIndex.drawer + 1,
             backgroundColor: theme.palette.mode === 'dark' ? '#004e40' : '#004e40',
         }}>
@@ -97,13 +101,16 @@ export default function AppBarComponent() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem key={'event'} onClick={() => scrollToSection('event')}>
+                                <Typography textAlign="center">
+                                    Event
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem key={"webpage"} onClick={() => navigator('/')}>
+                                <Typography textAlign="center">
+                                    Webpage
+                                </Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -126,15 +133,28 @@ export default function AppBarComponent() {
                         ADMIN
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        <Button
+                            key={'events'}
+                            onClick={() => scrollToSection('events')}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Events
+                        </Button>
+                        <Button
+                            key={'users'}
+                            onClick={() => scrollToSection('users')}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Users
+                        </Button>
+                        <Button
+                            key={'webpage'}
+                            onClick={() => { logout(); navigator('/'); }}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Webpage
+                        </Button>
+
                     </Box>
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                         <Typography
@@ -174,11 +194,6 @@ export default function AppBarComponent() {
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
                             <MenuItem key="logout" onClick={logout}>
                                 <Typography textAlign="center">LogOut</Typography>
                             </MenuItem>

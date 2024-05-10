@@ -11,9 +11,10 @@ export default function AdminLandingSection() {
     return (
         <>
             <Box sx={{
+                mt: 5,
                 display: 'block',
                 backgroundImage: `url(${bgUrl})`,
-                height: '78vh',
+                height: '80vh',
                 width: '100%',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
