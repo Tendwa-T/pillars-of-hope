@@ -12,7 +12,7 @@ import Data from "../Data.json";
 export default function SupportComponent() {
   return (
     <Container maxWidth="lg">
-      <Typography variant="h4" align="center">
+      <Typography variant="h2" align="center" sx={{mt:2}}>
         Support us
       </Typography>
       <Typography variant="h5" align="center">
@@ -26,7 +26,7 @@ export default function SupportComponent() {
               style={{ padding: "10xp", marginBottom: "30px" }}
             >
               <CardActionArea>
-                <CardMedia
+                <CardMedia sx={{ height:200}}
                   component="img"
                   height="140"
                   image={result.img}
