@@ -11,7 +11,7 @@ import Data from "../Data.json";
 
 export default function SupportComponent() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" id="support">
       <Typography variant="h2" align="center" sx={{mt:2}}>
         Support us
       </Typography>
