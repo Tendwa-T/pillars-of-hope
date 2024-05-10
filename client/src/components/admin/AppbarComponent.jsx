@@ -141,6 +141,13 @@ export default function AppBarComponent() {
                             Events
                         </Button>
                         <Button
+                            key={'users'}
+                            onClick={() => scrollToSection('users')}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            Users
+                        </Button>
+                        <Button
                             key={'webpage'}
                             onClick={() => { logout(); navigator('/'); }}
                             sx={{ my: 2, color: 'white', display: 'block' }}

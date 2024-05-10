@@ -121,10 +121,10 @@ export default function AdminLoginPage() {
                             />
 
                             <div className="flex justify-between w-full">
-                                <Button className="w-[120px] bg-slate-300" onClick={handleCancel}>
+                                <Button variant="contained" sx={{ width: '120px' }} onClick={handleCancel}>
                                     Cancel
                                 </Button>
-                                <Button className="w-[120px] bg-slate-300" type="submit" color="primary" >
+                                <Button type="submit" color="primary" variant="contained" sx={{ width: '120px' }} >
                                     Login
                                 </Button>
                             </div>

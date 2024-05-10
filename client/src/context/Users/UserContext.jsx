@@ -15,7 +15,7 @@ export function UserProvider({ children }) {
             getUsers();
         }
 
-    }, [isAuthenticated]);
+    }, [isAuthenticated, currentUser.token]);
 
     async function getUsers() {
 
@@ -61,11 +61,34 @@ export function UserProvider({ children }) {
             return false;
         }
     }
+
+    async function deleteUser(id) {
+        try {
+            const token = currentUser.token;
+            const response = await fetch(`${baseAPI}/api/user/delete/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
+                },
+            })
+
+            if (response.ok) {
+                getUsers();
+                return true;
+            }
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
     const value = {
         userList,
         setUserList,
         getUsers,
         createUser,
+        deleteUser
     };
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

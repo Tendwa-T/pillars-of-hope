@@ -58,7 +58,7 @@ export default function AdminEventsSection() {
 
         return (
 
-            <section id="events">
+            <>
                 <Button onClick={handleOpen} color='error' variant='contained'>Delete</Button>
                 <Modal
                     open={open}
@@ -77,7 +77,7 @@ export default function AdminEventsSection() {
                     </Box>
                 </Modal>
 
-            </section>
+            </>
 
         );
     }
@@ -88,49 +88,55 @@ export default function AdminEventsSection() {
 
 
     return (
-        <Box mt={2} sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
-            <Typography variant="h2" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>
-                Events
-            </Typography>
+        <section id='events'>
+            <Box mt={2} sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
+                <Typography variant="h2" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>
+                    Events
+                </Typography>
 
-            {events && events.length === 0 &&
-                <Box px={2} display={'flex'} justifyContent={'Center'} >
-                    <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>No events available</Typography>
+                {events && events.length === 0 &&
+                    <Box px={2} display={'flex'} justifyContent={'Center'} >
+                        <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>No events available</Typography>
+                    </Box>
+                }
+                {isAuthenticated &&
+                    <Box px={2} display={'flex'} justifyContent={'end'}>
+                        <AddEventForm />
+                    </Box>
+                }
+
+                <Box padding={2} sx={{ overflowX: 'auto', display: { xs: 'block', sm: 'flex' }, flexWrap: 'nowrap', width: '100%' }}>
+
+                    {events && events.map((event) => (
+
+                        <Card key={event._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', margin: 2, borderRadius: 5, minWidth: { xs: '70%', sm: '50%', md: '30%' }, flexWrap: 'nowrap' }}>
+                            <CardMedia image={event.image} sx={{ height: 200, width: '100%', }} />
+                            <CardContent>
+                                <Typography variant="h5" textAlign={'center'} fontWeight={'bold'} sx={{ cursor: 'default', userSelect: 'none', }}>{event.title}</Typography>
+                                <Typography variant="body1" sx={{ cursor: 'default', userSelect: 'none', }}>{event.description}</Typography>
+                                <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.date).format("dddd, MMMM Do YYYY")}</Typography><br></br>
+                                <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.time).format("h:mm a")}</Typography>
+                            </CardContent>
+                            {isAuthenticated &&
+                                <CardActions sx={{ display: { xs: 'block', sm: 'flex' }, justifyContent: 'space-between', width: "100%" }}>
+                                    <DeleteEvent eventID={event._id} />
+                                    <EditEventsForm eventData={event} />
+                                </CardActions>
+                            }
+
+                        </Card>
+
+                    ))}
+
                 </Box>
-            }
-            {isAuthenticated && <Box px={2} display={'flex'} justifyContent={'end'}>
-                <AddEventForm />
-            </Box>}
-
-            <Box padding={2} sx={{ overflowX: 'auto', display: { xs: 'block', sm: 'flex' }, flexWrap: 'nowrap', width: '100%' }}>
-
-                {events && events.map((event) => (
-
-                    <Card key={event._id} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', margin: 2, borderRadius: 5, minWidth: { xs: '70%', sm: '50%', md: '30%' }, flexWrap: 'nowrap' }}>
-
-                        <CardMedia image={event.image} sx={{ height: 200, width: '100%', }} />
-                        <CardContent>
-                            <Typography variant="h5" textAlign={'center'} fontWeight={'bold'} sx={{ cursor: 'default', userSelect: 'none', }}>{event.title}</Typography>
-                            <Typography variant="body1" sx={{ cursor: 'default', userSelect: 'none', }}>{event.description}</Typography>
-                            <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.date).format("dddd, MMMM Do YYYY")}</Typography><br></br>
-                            <Typography variant="caption" sx={{ cursor: 'default', userSelect: 'none', }}>{moment(event.time).format("h:mm a")}</Typography>
-                        </CardContent>
-                        {isAuthenticated && <CardActions sx={{ display: { xs: 'block', sm: 'flex' }, justifyContent: 'space-between', width: "100%" }}>
-                            <DeleteEvent eventID={event._id} />
-                            <EditEventsForm eventData={event} />
-                        </CardActions>}
-
-                    </Card>
-
-                ))}
+                <Snackbar open={snackConfig.openSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} autoHideDuration={6000} onClose={handleSnackbarClose}>
+                    <Alert onClose={handleSnackbarClose} severity={snackConfig.serverity} sx={{ width: '100%' }}>
+                        {snackConfig.message}
+                    </Alert>
+                </Snackbar>
 
             </Box>
-            <Snackbar open={snackConfig.openSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} autoHideDuration={6000} onClose={handleSnackbarClose}>
-                <Alert onClose={handleSnackbarClose} severity={snackConfig.serverity} sx={{ width: '100%' }}>
-                    {snackConfig.message}
-                </Alert>
-            </Snackbar>
+        </section>
 
-        </Box>
     )
 }
