@@ -1,9 +1,6 @@
 import { Button,Box, Typography, Stack, Container} from "@mui/material";
-import IconButton from "@mui/material/IconButton";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-
 
 export default function Footer() {
   return (
@@ -63,11 +60,9 @@ export default function Footer() {
           Account No: 01128564984200 <br />
           Account Name: Pillars Of Hope Childrens Home
         </Button>
-        <IconButton size="medium">
-          <FacebookIcon sx={{ bgcolor: "#fff" }} />
-        </IconButton>
+        
         <Box sx={{ padding: 2, maxWidth: "screen", marginTop: 4 }}>
-          <Typography variant="h6" sx={{marginTop:10}}>
+          <Typography variant="h6" sx={{marginTop:10, color:"white"}}>
             All rights reserved by Pillars of Hope Childrens Home
           </Typography>
         </Box>
