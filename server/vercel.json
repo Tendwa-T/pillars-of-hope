@@ -1,9 +1,8 @@
 {
-    "public": true,
-    "redirect": [
+    "rewrites": [
         {
             "source": "/admin",
-            "destination": "/public/src/admin/pages/admin.html"
+            "destination": "/admin.html"
         }
     ]
 }
