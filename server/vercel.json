@@ -1,10 +1,9 @@
 {
-    "redirects": [
+    "public": true,
+    "rewrites": [
         {
             "source": "/admin",
-            "destination": "/public/index.html",
-            "permanent": true,
-            "statusCode": 301
+            "destination": "/public/index.html"
         }
     ]
 }
