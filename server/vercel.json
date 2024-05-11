@@ -2,7 +2,7 @@
     "redirects": [
         {
             "source": "/admin",
-            "destination": "/index.html",
+            "destination": "/public/index.html",
             "permanent": true,
             "statusCode": 301
         }
