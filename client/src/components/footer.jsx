@@ -9,7 +9,6 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <Box
       sx={{
@@ -50,12 +49,12 @@ export default function Footer() {
               src="assets/logo.png"
               alt="Logo"
               style={{
-                width: "40%",
-                height: !isSmallScreen
-                  ? "60%"
+                width: "30%",
+                height: isSmallScreen
+                  ? "80%"
                   : "@media (max-width: 900px)"
-                  ? "50%"
-                  : "80%",
+                  ? "40%"
+                  : "40%",
                 borderRadius: "10%",
               }}
             />
@@ -64,8 +63,8 @@ export default function Footer() {
               sx={{
                 color: "#fff",
                 padding: "0.3em",
-                "@media (max-width: 900px)": {
-                  fontSize: "0.8rem",
+                "@media (max-width: 1300px)": {
+                  fontSize: "1rem",
                 },
               }}
             >
