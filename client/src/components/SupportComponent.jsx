@@ -9,7 +9,7 @@ import Data from "../Data.json";
 
 export default function SupportComponent() {
   return (
-    <Box id="support" sx={{ display: { xs: 'block' }, paddingX: '1em', my: '4em' }} width={'100%'}>
+    <Box id="support" sx={{ display: { xs: 'block' }, paddingX: '1em', my: '4em', userSelect: 'none' }} width={'100%'}>
       <Typography variant="h3" align="center" sx={{ mt: 2, color: "#2ecc71" }}>
         Support us
       </Typography>
@@ -24,7 +24,6 @@ export default function SupportComponent() {
             <CardMedia sx={{ height: '60%', width: '100%', }}
               component="img"
               image={result.img}
-
               alt="Loading..."
               style={{ borderRadius: "5px" }}
             />
