@@ -1,7 +1,7 @@
 {
     "redirects": [
         {
-            "source": "/*",
+            "source": "/admin",
             "destination": "/index.html",
             "permanent": true,
             "statusCode": 301
