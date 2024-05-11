@@ -41,14 +41,34 @@ export default function Footer() {
               alignItems: "center",
               justifyContent: "center",
               padding: "0.5em",
+              "@media (max-width: 800px)": {
+                display: "none",
+              },
             }}
           >
             <img
               src="assets/logo.png"
               alt="Logo"
-              style={{ width: "40%", height: "80%", borderRadius: "10%" }}
+              style={{
+                width: "40%",
+                height: !isSmallScreen
+                  ? "60%"
+                  : "@media (max-width: 900px)"
+                  ? "50%"
+                  : "80%",
+                borderRadius: "10%",
+              }}
             />
-            <Typography variant="h6" sx={{ color: "#fff", padding: "0.3em" }}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#fff",
+                padding: "0.3em",
+                "@media (max-width: 900px)": {
+                  fontSize: "0.8rem",
+                },
+              }}
+            >
               Pillars of Hope
               <br />
               Children's Home
@@ -59,16 +79,26 @@ export default function Footer() {
           <Divider
             orientation="vertical"
             flexItem
-            sx={{ backgroundColor: "#506e68", width: "auto" }}
+            sx={{
+              backgroundColor: "#506e68",
+              width: "auto",
+              "@media (max-width: 800px)": {
+                display: "none",
+              },
+            }}
           />
         )}
         <Box
           sx={{
-            width: isSmallScreen ? "100%" : "15%",
+            width: isSmallScreen
+              ? "100%"
+              : "@media (max-width: 800px)"
+              ? "20%"
+              : "15%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "Start",
             padding: isSmallScreen ? "1em" : "0",
           }}
         >
@@ -81,6 +111,7 @@ export default function Footer() {
             variant="h6"
             sx={{
               color: "#fff",
+              marginTop: isSmallScreen ? "0" : "0.5em",
             }}
           >
             Contact Us
@@ -107,22 +138,26 @@ export default function Footer() {
         )}
         <Box
           sx={{
-            width: isSmallScreen ? "100%" : "20%",
+            width: isSmallScreen
+              ? "100%"
+              : "@media (max-width: 800px)"
+              ? "30%"
+              : "20%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "start",
             padding: isSmallScreen ? "1em" : "0",
           }}
         >
           <Typography
             variant="h6"
-            sx={{ color: "#fff" }}
+            sx={{ color: "#fff", marginTop: isSmallScreen ? "0" : "0.5em" }}
           >
             Location
           </Typography>
           <Stack direction="row" alignItems="center" spacing="0.2em">
-            {!isSmallScreen && <Location sx={{ color: "#fff" }} />}
+            {!isSmallScreen && <LocationOn sx={{ color: "#fff" }} />}
             <Box sx={{ marginBottom: isSmallScreen ? "1em" : "0" }}>
               <Typography variant="body2" sx={{ color: "#fff" }}>
                 {isSmallScreen ? (
@@ -168,22 +203,31 @@ export default function Footer() {
         )}
         <Box
           sx={{
-            width: isSmallScreen ? "100%" : "30%",
+            width: isSmallScreen
+              ? "100%"
+              : "@media (max-width: 800px)"
+              ? "40%"
+              : "30%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "start",
           }}
         >
           <Typography
             variant="h6"
-            sx={{ color: "#fff", padding: isSmallScreen ? "0.5em" : "0" }}
+            sx={{ color: "#fff", marginTop: isSmallScreen ? "0" : "0.5em" }}
           >
             Financial Support
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "#fff", marginBottom: isSmallScreen ? "1em" : "0" }}
+            sx={{
+              color: "#fff",
+              marginBottom: isSmallScreen ? "1em" : "0",
+              textAlign: "center",
+              marginLeft: isSmallScreen ? "0" : "1em",
+            }}
           >
             Mpesa paybill: 874 580 <br />
             Cooperative bank branch: Athi River <br />
@@ -240,7 +284,7 @@ export default function Footer() {
             padding="1em"
           >
             <a
-              href="https://www.facebook.com"
+              href="https://www.facebook.com/p/Pillars-Childrens-home-Daystar-Athi-River-100064941483871/"
               target="_blank" //open in a new tab when clicked
               rel="noopener noreferrer"
             >
@@ -254,7 +298,7 @@ export default function Footer() {
               />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://twitter.com/pillars_home"
               target="_blank"
               rel="noopener noreferrer"
             >
