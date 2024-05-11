@@ -16,7 +16,6 @@ import Typography from "@mui/material/Typography";
 export default function DrawerAppBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleDrawerToggle = () => {
@@ -77,27 +76,27 @@ export default function DrawerAppBar() {
             },
           }}
         >
-          {!isSmallScreen && (
-            <Box sx={{ padding: "1em" }}>
-              <img
-                src="assets/logo.png"
-                alt="Logo"
-                style={{ height: "50px", borderRadius: "6px" }}
-              />
-            </Box>
-          )}
+
+          <Box sx={{ padding: "1em", display: { xs: 'none', md: 'flex' } }}>
+            <img
+              src="assets/logo.png"
+              alt="Logo"
+              style={{ height: "50px", borderRadius: "6px" }}
+            />
+          </Box>
+
           <Box sx={{ flexGrow: 1, order: { xs: 2, sm: 1 } }}>
             <Typography
+              textAlign={'center'}
               variant="h6"
               noWrap
               component="div"
               sx={{
                 color: "#fff",
-                marginLeft: { xs: "1.5em", sm: "0" },
                 marginTop: { xs: "1em", sm: "0" },
               }}
             >
-              Pillars of Hope Children's Home
+              Pillars of Hope Children&apos;s Home
             </Typography>
           </Box>
 
