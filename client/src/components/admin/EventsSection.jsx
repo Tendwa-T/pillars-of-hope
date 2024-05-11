@@ -90,13 +90,13 @@ export default function AdminEventsSection() {
     return (
         <section id='events'>
             <Box mt={2} sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
-                <Typography variant="h2" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>
+                <Typography variant="h3" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', color: "#2ecc71" }}>
                     Events
                 </Typography>
 
                 {events && events.length === 0 &&
                     <Box px={2} display={'flex'} justifyContent={'Center'} >
-                        <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>No events available</Typography>
+                        <Typography variant="caption" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>No events available</Typography>
                     </Box>
                 }
                 {isAuthenticated &&

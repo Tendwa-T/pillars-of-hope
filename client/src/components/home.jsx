@@ -6,50 +6,53 @@ export default function Home() {
       <Box
         sx={{
           bgcolor: "#004e40",
-          minheight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: "10em",
-          marginTop: "5em",
+          marginBottom: "2em",
+          marginTop: { xs: '5em', sm: 0 },
         }}
       >
         <Box
           sx={{
-            height: "88vh",
-            width: "80%",
+            paddingX: { xs: "1em", sm: "2em" },
+            width: "100%",
             marginLeft: "auto",
             marginRight: "auto",
+            marginBottom: "5em",
           }}
         >
           <Box
             sx={{
-              height: "74vh",
+              height: { xs: "60vh", sm: 'auto' },
               width: "100%",
-              marginTop: { xs: "1em", sm: "4em" },
-              
+              marginTop: { xs: "1em", sm: "2em", lg: '0' },
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
-              justifyContent: "space-between",
+              justifyContent: "center",
+              alignContent: "center",
+              border: '2px solid #f0f0f',
             }}
           >
             <Box
               sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: "center",
+                paddingX: { xs: "1em", sm: "2em" },
                 overflow: "hidden",
-                width: { xs: "100%", sm: "50%" },
+                width: { xs: "100%", sm: "100%", },
                 order: { xs: 1, sm: 1 },
-                marginTop: { xs: "auto", sm: "0" },
+                marginTop: { xs: "3em", sm: "8em" },
                 marginBottom: { xs: "auto", sm: "0" },
+
               }}
             >
               <Typography
                 variant="h2"
                 sx={{
-                  marginTop: { xs: "0", sm: "1em" },
+                  fontSize: { xs: "2em", sm: "3em", lg: '4em' },
                   color: "#F0F0F0",
-                  "@media (max-width: 900px)": {
-                    fontSize: "2rem",
-                  },
                 }}
               >
                 Tender Acts,
@@ -58,9 +61,7 @@ export default function Home() {
                 variant="h2"
                 sx={{
                   color: "#F0F0F0",
-                  "@media (max-width: 900px)": {
-                    fontSize: "2rem",
-                  },
+                  fontSize: { xs: "2em", sm: "3em", lg: '4em' },
                 }}
               >
                 Spreading Love,
@@ -69,10 +70,8 @@ export default function Home() {
                 variant="h2"
                 gutterBottom
                 sx={{
+                  fontSize: { xs: "2em", sm: "3em", lg: '4em' },
                   color: "#F0F0F0",
-                  "@media (max-width: 900px)": {
-                    fontSize: "2rem",
-                  },
                   marginBottom: { xs: "0.5em", sm: "0.3em" },
                 }}
               >
@@ -80,15 +79,16 @@ export default function Home() {
               </Typography>
 
               <Typography
-                variant="body1"
+                variant="caption"
                 sx={{
+                  fontSize: { lg: '1.2em' },
+                  display: { xs: "block", sm: "block" },
                   color: "#F0F0F0",
-                  marginBottom: { xs: "15em", sm: "0" },
                 }}
               >
-                Pillars of Hope Children's Home stands as a beacon of
+                Pillars of Hope Children&apos;s Home stands as a beacon of
                 compassion, offering a sanctuary for the vulnerable children in
-                Kenya. Together, let's weave a tapestry of hope and opportunity,
+                Kenya. Together, let&apos;s weave a tapestry of hope and opportunity,
                 nurturing their dreams and empowering their futures. Join our
                 circle of kindness and be a catalyst for change, because every
                 child deserves to blossom in a garden of love and possibility.
@@ -97,12 +97,14 @@ export default function Home() {
 
             <Box
               sx={{
-                width: { xs: "100%", sm: "50%" },
+                display: { xs: 'none', sm: 'block' },
+                justifyContent: "center",
+                width: "50%",
                 position: "relative",
                 overflow: "hidden",
                 order: { xs: 1, sm: 1 },
                 marginTop: { xs: "auto", sm: "0" },
-                marginBottom: { xs: "auto", sm: "0" },
+                top: { sm: "8em", md: '8em', lg: '12em' },
               }}
             >
               <img
@@ -110,9 +112,8 @@ export default function Home() {
                 alt="children"
                 style={{
                   width: "100%",
-                  height: "100%",
+                  height: "60%",
                   objectFit: "cover",
-                  marginBottom:{xs:"2em", sm:"0"}
                 }}
               />
             </Box>

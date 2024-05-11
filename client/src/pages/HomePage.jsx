@@ -10,10 +10,10 @@ export default function HomePage() {
     <>
       <DrawerAppBar />
       <Home />
-      <AdminEventsSection />
       <AboutPage />
-      <SupportComponent/>
-      <Footer/>
+      <AdminEventsSection />
+      <SupportComponent />
+      <Footer />
     </>
   );
 }

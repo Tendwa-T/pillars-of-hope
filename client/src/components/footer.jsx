@@ -1,6 +1,5 @@
-import React from "react";
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import { Twitter, LinkedIn, Instagram, Facebook } from "@mui/icons-material";
+import { Twitter, Facebook } from "@mui/icons-material";
 import { Phone, LocationOn } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -8,97 +7,79 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  var isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box
       sx={{
         backgroundColor: "#004e40",
-        padding: { sx: "1em", sm: "1em" },
+        padding: { xs: "1em", sm: "1em" },
         maxWidth: "100%",
         overflow: "Hidden",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: { sx: "20em", sm: "17em" },
+        height: { xs: "30em", sm: "20em", md: "20em" },
       }}
     >
       <Box
         sx={{
-          height: { sx: "14em", sm: "10em" },
+          height: { xs: "20em", sm: "10em" },
           display: "flex",
-          width: { sx: "100%" },
-          justifyContent: { sm: "center" },
-          flexDirection: isSmallScreen ? "column" : "row",
+          width: "100%",
+          justifyContent: 'space-evenly',
+          flexDirection: { xs: "column", sm: 'row', md: "row" },
           padding: { sm: "0.5em" },
         }}
       >
-        {!isSmallScreen && (
-          <Box
-            sx={{
-              width: "20%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0.5em",
-              "@media (max-width: 800px)": {
-                display: "none",
-              },
-            }}
-          >
-            <img
-              src="assets/logo.png"
-              alt="Logo"
-              style={{
-                width: "30%",
-                height: isSmallScreen
-                  ? "80%"
-                  : "@media (max-width: 900px)"
-                  ? "40%"
-                  : "40%",
-                borderRadius: "10%",
-              }}
-            />
-            <Typography
-              variant="h6"
-              sx={{
-                color: "#fff",
-                padding: "0.3em",
-                "@media (max-width: 1300px)": {
-                  fontSize: "1rem",
-                },
-              }}
-            >
-              Pillars of Hope
-              <br />
-              Children's Home
-            </Typography>
-          </Box>
-        )}
-        {isSmallScreen ? null : (
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{
-              backgroundColor: "#506e68",
-              width: "auto",
-              "@media (max-width: 800px)": {
-                display: "none",
-              },
-            }}
-          />
-        )}
+
+
         <Box
           sx={{
-            width: isSmallScreen
-              ? "100%"
-              : "@media (max-width: 800px)"
-              ? "20%"
-              : "15%",
+            display: { xs: 'none', md: 'flex' },
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0.5em",
+            flexDirection: 'column'
+          }}
+        >
+          <img
+            src="assets/logo.png"
+            alt="Logo"
+            style={{
+              width: '50%',
+              height: '50%',
+              borderRadius: "10%",
+            }}
+          />
+          <Typography
+            variant="body2"
+            textAlign={'center'}
+            justifyContent={'center'}
+            sx={{
+              color: "#fff",
+              padding: "0.3em",
+            }}
+          >
+            Pillars of Hope
+            <br />
+            Children&apos;s Home
+          </Typography>
+
+
+        </Box>
+
+        <Divider
+          orientation="vertical"
+          sx={{ backgroundColor: "#fff", height: "auto", mr: { xs: "0", sm: "1em" } }}
+        />
+
+        <Box
+          sx={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "Start",
-            padding: isSmallScreen ? "1em" : "0",
+            mb: { xs: "1em", sm: "0" },
           }}
         >
           <Divider
@@ -107,41 +88,50 @@ export default function Footer() {
             sx={{ backgroundColor: "#fff", height: "auto" }}
           />
           <Typography
+            textAlign={'center'}
             variant="h6"
             sx={{
               color: "#fff",
-              marginTop: isSmallScreen ? "0" : "0.5em",
+              marginTop: { xs: "0", sm: "0.5em" },
             }}
           >
             Contact Us
           </Typography>
-          <Stack direction="row" alignItems="center" spacing={1}>
-            {!isSmallScreen && <Phone sx={{ color: "#fff" }} />}
+          <Stack direction="row" display={'flex'} justifyItems={'center'} alignItems="center" spacing={1}>
 
-            <Typography variant="body2" sx={{ color: "#fff" }}>
-              123-456-7890
-            </Typography>
+            <Box display={{ xs: 'none', sm: 'flex' }}>
+              <Phone sx={{ color: "#fff" }} />
+            </Box>
+            <Box display={{ xs: 'flex' }} flexDirection={{ xs: 'column' }}>
+              <Typography variant="caption" sx={{ color: "#fff" }}>
+                +254 721 787 167
+              </Typography>
+              <Typography variant="caption" sx={{ color: "#fff" }}>
+                +254 731 764 219
+              </Typography>
+              <Typography variant="caption" sx={{ color: "#fff" }}>
+                +254 714 140 205
+              </Typography>
+            </Box>
+
+
           </Stack>
         </Box>
-        {isSmallScreen ? (
-          <Divider
-            orientation="horizontal"
-            sx={{ backgroundColor: "#fff", height: "auto" }}
-          />
-        ) : (
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ backgroundColor: "#506e68", width: "auto" }}
-          />
-        )}
+
+
+        <Divider
+          orientation="horizontal"
+          sx={{ backgroundColor: "#fff", height: "auto" }}
+        />
+
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{ backgroundColor: "#fff", width: "auto" }}
+        />
+
         <Box
           sx={{
-            width: isSmallScreen
-              ? "100%"
-              : "@media (max-width: 800px)"
-              ? "30%"
-              : "20%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -197,16 +187,11 @@ export default function Footer() {
           <Divider
             orientation="vertical"
             flexItem
-            sx={{ backgroundColor: "#506e68", width: "auto" }}
+            sx={{ backgroundColor: "#fff", width: "auto" }}
           />
         )}
         <Box
           sx={{
-            width: isSmallScreen
-              ? "100%"
-              : "@media (max-width: 800px)"
-              ? "40%"
-              : "30%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -234,11 +219,15 @@ export default function Footer() {
             Account Name: Pillars Of Hope Childrens Home
           </Typography>
         </Box>
+        <Divider
+          orientation="vertical"
+          sx={{ backgroundColor: "#fff", height: "auto", mr: { xs: "0", sm: "1em" } }}
+        />
       </Box>
       <Divider
         sx={{
           backgroundColor: "#fff",
-          width: isSmallScreen ? "100%" : "85%",
+          width: "90%",
           margin: "auto",
         }}
       />
@@ -246,7 +235,7 @@ export default function Footer() {
         sx={{
           height: { sx: "6em", sm: "4em" },
           display: "flex",
-          flexDirection: isSmallScreen ? "column" : "row",
+          flexDirection: { xs: "column", sm: "row" },
         }}
       >
         <Box
@@ -260,6 +249,7 @@ export default function Footer() {
           }}
         >
           <Typography
+            textAlign={'center'}
             sx={{
               color: "#fff",
               marginBottom: { xs: "1em", sm: "0" },
@@ -302,34 +292,6 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               <Twitter
-                sx={{
-                  height: "20px",
-                  width: "20px",
-                  color: "#fff",
-                  cursor: "pointer",
-                }}
-              />
-            </a>
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram
-                sx={{
-                  height: "20px",
-                  width: "20px",
-                  color: "#fff",
-                  cursor: "pointer",
-                }}
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedIn
                 sx={{
                   height: "20px",
                   width: "20px",
