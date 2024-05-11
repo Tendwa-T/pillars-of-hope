@@ -72,9 +72,13 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     }
 })
 
-app.use('/*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
+
+app.use("/admin", (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'src', 'pages', 'admin', 'admin.html'));
+})
 
 
 

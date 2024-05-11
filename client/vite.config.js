@@ -12,6 +12,12 @@ export default defineConfig({
     ],
   },
   build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        admin: './src/pages/admin/admin.html',
+      }
+    },
     outDir: '../server/public',
     emptyOutDir: false,
   },
