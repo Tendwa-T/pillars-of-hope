@@ -1,29 +1,26 @@
-
-
 [
   {
     "id ": 1,
     "title": "Help for school fees",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "The children are in various schools and we require money for their school fees to sustain them in the schools.",
     "img": "/assets/school.jpg"
   },
   {
     "id": 2,
     "title": "Help for food & clothing",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "We are requesting for dry foods to be able to feed all the children here. Clothings are also required so that the children can have enough to wear and wash",
     "img": "/assets/foodClothing.jpg"
   },
-
   {
     "id": 3,
     "title": "Help for Land acquisition",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "We are currently in the process of purchasing the land at which the home is but due to lack of sufficient finances, we need your help. Your help to buy even a bigger land is highly appreciated",
     "img": "/assets/land.jpg"
   },
   {
     "id": 4,
     "title": "Help for bills",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "We are requesting for your help to manage the expenses at the home. This applies to electricity and water",
     "img": "/assets/bills.jpg"
   }
 ]

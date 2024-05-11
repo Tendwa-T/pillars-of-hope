@@ -34,6 +34,18 @@ export default function AdminUserSection() {
     }
 
     function stringAvatar(name) {
+        //Check if name has 2 names or one
+        if (name.split(' ').length === 1) {
+            return {
+                sx: {
+                    bgcolor: stringToColor(name),
+                    width: 56,
+                    height: 56,
+
+                },
+                children: `${name[0]}`
+            }
+        }
         return {
             sx: {
                 bgcolor: stringToColor(name),
@@ -153,7 +165,7 @@ export default function AdminUserSection() {
         <section id="users">
             <Box mb={10}>
                 <Box sx={{ display: 'flex', flexWrap: 'nowrap', flexDirection: 'column' }}>
-                    <Typography variant="h2" textAlign={'center'} sx={{ cursor: 'default', userSelect: 'none', }}>Adminstrators</Typography>
+                    <Typography variant="h3" textAlign={'center'} sx={{ color: "#2ecc71", cursor: 'default', userSelect: 'none', }}>Adminstrators</Typography>
                 </Box>
                 <Box px={2} display={'flex'} justifyContent={'end'}>
                     <AddUserForm />
