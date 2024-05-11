@@ -1,6 +1,6 @@
 {
     "public": true,
-    "rewrites": [
+    "redirect": [
         {
             "source": "/admin",
             "destination": "/public/src/admin/pages/admin.html"
