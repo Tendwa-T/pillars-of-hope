@@ -1,20 +1,50 @@
 /* eslint-disable no-unused-vars */
 import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../context/Auth/useAuth";
 import { useNavigate } from "react-router-dom";
 import AlertComponent from "../../components/admin/AlertComponent";
+import ColorThief from 'colorthief'
 
 
 
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState("");
+    const [backgroundImg, setBackgroundImg] = useState("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    const [backgroundColor, setBackgroundColor] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [alert, setAlert] = useState({ show: false, message: "", severity: "" })
     const [password, setPassword] = useState("");
     const { login } = useAuth();
     const nav = useNavigate();
+
+    useEffect(() => {
+        async function fetchDominantColor() {
+            try {
+                const dominantColor = await getDominantColor(backgroundImg);
+                setBackgroundColor(`rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`);
+                return
+            } catch (error) {
+                console.error("Failed to fetch color", error)
+            }
+        }
+        fetchDominantColor();
+    }, [backgroundImg])
+
+    async function getDominantColor(backgroundImg) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.src = backgroundImg;
+            img.onload = () => {
+                const colorThief = new ColorThief();
+                const dominantColor = colorThief.getColor(img);
+                resolve(dominantColor);
+            };
+            img.onerror = (error) => reject(error);
+        });
+    }
 
 
 
@@ -45,10 +75,16 @@ export default function AdminLoginPage() {
         setEmail("");
         setPassword("");
     }
+
+
     return (
-        <div className="flex justify-center items-center h-[100vh] bg-[#c9b098]">
-            <div className="flex justify-center items-center flex-col h-[80vh] w-[60vw] bg-[url('../../../login_backdrop.jpg')] bg-center bg-cover rounded-2xl">
-                <Container maxWidth='sm' className="backdrop-blur-md bg-black/20 rounded-xl my-[10vw] mx-[5vw] p-[2vw] shadow-xl ">
+        <div className="flex justify-center items-center h-[100vh]"
+            style={{ backgroundColor: backgroundColor }}
+        >
+            <div className="flex justify-center items-center flex-col h-[80vh] w-[60vw] bg-center bg-cover rounded-2xl"
+                style={{ backgroundImage: `url(${backgroundImg})` }}
+            >
+                <Container fixed maxWidth='sm' className="backdrop-blur-md bg-black/20 rounded-xl my-[10vw] mx-[5vw] p-[2vw] shadow-xl ">
                     <Box sx={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -85,10 +121,10 @@ export default function AdminLoginPage() {
                             />
 
                             <div className="flex justify-between w-full">
-                                <Button className="w-[120px] bg-slate-300" onClick={handleCancel}>
+                                <Button variant="contained" sx={{ width: '120px' }} onClick={handleCancel}>
                                     Cancel
                                 </Button>
-                                <Button className="w-[120px] bg-slate-300" type="submit" color="primary" >
+                                <Button type="submit" color="primary" variant="contained" sx={{ width: '120px' }} >
                                     Login
                                 </Button>
                             </div>
