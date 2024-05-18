@@ -1,0 +1,13 @@
+{
+  "name": "pillars-of-hope",
+  "version": "1.0.0",
+  "description": "Pillars of hope website",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd ./client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ./server && npm start"
+  },
+  "author": "",
+  "license": "ISC"
+}
