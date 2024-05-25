@@ -77,7 +77,7 @@ app.get('/*', (req, res) => {
 });
 
 app.use("/admin", (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'src', 'pages', 'admin', 'admin.html'));
 })
 
 
