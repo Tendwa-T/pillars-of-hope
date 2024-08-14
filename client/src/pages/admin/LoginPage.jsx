@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Box, Button, Container, TextField, Backdrop, CircularProgress } from "@mui/material";
+import { Box, Button, Container, TextField, Backdrop, CircularProgress, Link } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/Auth/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -127,6 +127,11 @@ export default function AdminLoginPage() {
                                 <Button type="submit" color="primary" variant="contained" sx={{ width: '120px' }} >
                                     Login
                                 </Button>
+                            </div>
+                            <div>
+                                <Link href="/forgot-password" >
+                                    Forgot Password?
+                                </Link>
                             </div>
                         </form>
                         {isLoading && <CircularProgress />}

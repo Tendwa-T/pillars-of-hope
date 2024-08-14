@@ -17,6 +17,7 @@ import { EventProvider } from "./context/Event/EventContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import { UserProvider } from "./context/Users/UserContext";
+import ForgotPassword from "./pages/admin/ForgotPass";
 
 function AppContent() {
   const location = useLocation();
@@ -26,8 +27,9 @@ function AppContent() {
       "/": "Home",
       "/about": "About",
       "/admin": "Admin Login",
-      "/support":"Support",
+      "/support": "Support",
       "/events": "Events",
+      "/forgot-password": 'Forgot Password',
       "/admin/dashboard": "Admin Dashboard",
       "/admin/events": "Admin Events",
     };
@@ -39,6 +41,7 @@ function AppContent() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/admin" element={<AdminLoginPage />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route
         path="/admin/dashboard"
         element={<ProtectedRoute element={<AdminDashboardPage />} />}
