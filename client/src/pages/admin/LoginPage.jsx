@@ -64,6 +64,7 @@ export default function AdminLoginPage() {
         setIsLoading(true);
         event.preventDefault();
         const loginSuccess = await login(email, password);
+        console.log(email, password)
         if (!loginSuccess) {
             setAlert({ show: true, message: "Invalid email or password", severity: "error" });
         } else {
